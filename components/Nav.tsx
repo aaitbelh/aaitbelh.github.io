@@ -41,6 +41,10 @@ export function Nav() {
             </a>
           ))}
         </nav>
+        <div className="nav-right">
+          <span className="pill"><i /> pipelines green</span>
+          <a className="btn primary sm" href="#contact">Hire me</a>
+        </div>
       </div>
     </header>
   );

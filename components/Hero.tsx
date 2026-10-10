@@ -1,32 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Terminal } from "./Terminal";
-import { TypedScript, type Step } from "./TypedScript";
+import { PipelineGlass } from "./PipelineGlass";
+import { Streams } from "./Streams";
 import { profile } from "@/lib/data";
-
-const steps: Step[] = [
-  { kind: "cmd", text: "whoami" },
-  { kind: "out", lines: ["ayoub-ait-belhaj"], tone: "ok" },
-  { kind: "cmd", text: "cat role.txt" },
-  {
-    kind: "out",
-    lines: ["DevOps / Platform Engineer", "pipelines · kubernetes · iac · secure edge"],
-  },
-  { kind: "cmd", text: "terraform plan" },
-  {
-    kind: "out",
-    lines: ["No changes. Infrastructure matches the configuration.", "Plan: 0 to add, 0 to change, 0 to destroy."],
-    tone: "dim",
-  },
-  { kind: "cmd", text: "./status.sh" },
-  {
-    kind: "out",
-    lines: ["✔ pipelines green", "✔ cluster healthy", "✔ certificates valid", "✔ open to new opportunities"],
-    tone: "ok",
-    gap: 220,
-  },
-];
 
 const line1 = ["Pipelines", "that", "ship."];
 const line2 = ["Platforms", "that", "hold."];
@@ -61,11 +38,7 @@ export function Hero() {
 
   return (
     <div className="hero-wrap" id="top">
-      <div className="orb" aria-hidden="true">
-        <div className="ring" />
-        <div className="ring2" />
-        <div className="core" />
-      </div>
+      <Streams />
 
       <section className="wrap hero" style={{ paddingTop: 40 }}>
         <div>
@@ -100,10 +73,8 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <motion.div {...fade(0.5)}>
-          <Terminal title="ayoub@devops: ~ — zsh" className="glass spot">
-            <TypedScript steps={steps} minHeight={290} />
-          </Terminal>
+        <motion.div className="hero-right" {...fade(0.4)}>
+          <PipelineGlass />
         </motion.div>
       </section>
     </div>
