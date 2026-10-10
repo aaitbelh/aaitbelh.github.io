@@ -9,12 +9,21 @@ export function Background() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.documentElement;
     let raf = 0;
     const onMove = (e: PointerEvent) => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        document.documentElement.style.setProperty("--mx", `${e.clientX}px`);
-        document.documentElement.style.setProperty("--my", `${e.clientY}px`);
+        root.style.setProperty("--mx", `${e.clientX}px`);
+        root.style.setProperty("--my", `${e.clientY}px`);
+        root.style.setProperty("--px", `${(e.clientX / window.innerWidth - 0.5) * 2}`);
+        root.style.setProperty("--py", `${(e.clientY / window.innerHeight - 0.5) * 2}`);
+        const spot = (e.target as HTMLElement | null)?.closest<HTMLElement>(".spot, .term, .stage");
+        if (spot) {
+          const r = spot.getBoundingClientRect();
+          spot.style.setProperty("--sx", `${e.clientX - r.left}px`);
+          spot.style.setProperty("--sy", `${e.clientY - r.top}px`);
+        }
       });
     };
     window.addEventListener("pointermove", onMove, { passive: true });

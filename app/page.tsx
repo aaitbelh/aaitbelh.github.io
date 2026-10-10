@@ -1,6 +1,7 @@
 import { Background } from "@/components/Background";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/Reveal";
 import { Pipeline } from "@/components/Pipeline";
 import { GitLog } from "@/components/GitLog";
@@ -16,6 +17,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <Marquee />
 
         <section className="wrap" id="pipeline">
           <Reveal>

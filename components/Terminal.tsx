@@ -10,7 +10,7 @@ export function Terminal({
   className?: string;
 }) {
   return (
-    <div className={`term ${className}`}>
+    <div className={`term spot ${className}`}>
       <div className="term-bar" aria-hidden="true">
         <span className="dot r" />
         <span className="dot y" />
